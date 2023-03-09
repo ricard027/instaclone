@@ -5,7 +5,10 @@ interface IbuttonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string
 }
 
-const ButtonComponent: FunctionComponent<IbuttonProps> = ({ children }) => {
-  return <CustonButton>{children}</CustonButton>
+const ButtonComponent: FunctionComponent<IbuttonProps> = ({
+  children,
+  ...rest
+}) => {
+  return <CustonButton {...rest}>{children}</CustonButton>
 }
 export default ButtonComponent
