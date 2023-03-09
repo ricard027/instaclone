@@ -8,6 +8,21 @@ export const LoginContainer = styled.main`
   align-items: center;
   font-family: sans-serif;
 `
+export const MessageError = styled.div`
+  text-align: left;
+  margin: 2px 0;
+  font-size: 12px;
+  color: red;
+`
+
+export const LoginHeadLine = styled.i`
+  margin-top: 1rem;
+  background-image: url(https://static.cdninstagram.com/rsrc.php/v3/y-/r/yXM3FgMdVNX.png);
+  background-position: 0px -52px;
+  width: 175px;
+  height: 51px;
+`
+
 export const FormContainer = styled.div`
   background: #fafafa;
   border: solid 1px #dbdbdb;
@@ -26,17 +41,22 @@ export const LoginFacebook = styled.div`
   align-items: center;
   gap: 0.5rem;
   color: #00376b;
+  cursor: pointer;
+  svg {
+    margin-bottom: 1.5px;
+  }
 `
 export const ForgotPassword = styled.div`
   font-size: 12px;
   color: #00376b;
+  cursor: pointer;
 `
 
 export const CreateAcount = styled.div`
   border: solid 1px #dbdbdb;
   background: #fafafa;
   margin-top: 10px;
-  width: 350px;
+  width: 360px;
   height: 63px;
   padding: 1rem;
 
@@ -48,6 +68,7 @@ export const CreateAcount = styled.div`
   span {
     color: #0095f6;
     font-weight: bold;
+    cursor: pointer;
   }
 `
 export const ObtainApp = styled.span`
@@ -67,33 +88,7 @@ export const AppContainer = styled.div`
     border-radius: 0.2rem;
   }
 `
-export const InputContainer = styled.div`
-  width: 258px;
-  margin-top: 10px;
-  background: #fafafa;
 
-  input {
-    width: 100%;
-    height: 38px;
-    margin-top: 8px;
-    border: solid 1px #dbdbdb;
-    border-radius: 0.2rem;
-  }
-  input::placeholder {
-    color: #8e8e8e;
-    text-align: justify;
-    padding: 1rem;
-  }
-`
-export const CustonButton = styled.button`
-  background: #0095f6;
-  width: 258px;
-  padding: 0.6rem;
-  border: none;
-  border-radius: 0.5rem;
-  color: #ffffff;
-  cursor: pointer;
-`
 export const Separator = styled.div`
   width: 260px;
   text-align: center;
@@ -113,11 +108,4 @@ export const Separator = styled.div`
     background: #fafafa;
     margin-bottom: 0.5rem;
   }
-`
-export const LoginHeadLine = styled.i`
-  margin-top: 1rem;
-  background-image: url(https://static.cdninstagram.com/rsrc.php/v3/y-/r/yXM3FgMdVNX.png);
-  background-position: 0px -52px;
-  width: 175px;
-  height: 51px;
 `
