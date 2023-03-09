@@ -12,6 +12,7 @@ import {
 } from './login.styles'
 
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import { AiFillFacebook } from 'react-icons/ai'
 import { InputContainer } from '../../components/input/input.styled'
@@ -26,6 +27,7 @@ interface IinputsForm {
 }
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -36,7 +38,9 @@ const LoginPage = () => {
     console.log({ data })
   }
   console.log({ errors })
-
+  const handleNavigate = () => {
+    navigate('/home')
+  }
   return (
     <LoginContainer>
       <FormContainer>
@@ -73,7 +77,7 @@ const LoginPage = () => {
           Entrar
         </ButtonComponent>
         <Separator>OU</Separator>
-        <LoginFacebook>
+        <LoginFacebook onClick={handleNavigate}>
           <AiFillFacebook size={22} color="#00376b" />
           Entrar com o Facebook
         </LoginFacebook>
