@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { AiFillFacebook } from 'react-icons/ai'
 import { InputContainer } from '../../components/input/input.styled'
-import CustomInput from '../../components/input/CustomInput'
+import CustomInput from '../../components/input/custonIput.component'
 import ButtonComponent from '../../components/button/custonButton.component'
 
 import validator from 'validator'
@@ -36,6 +36,9 @@ const LoginPage = () => {
 
   const handlesubmitPress = (data: any) => {
     console.log({ data })
+  }
+  const handleCreateAcount = () => {
+    navigate('/sign-up')
   }
   console.log({ errors })
   const handleNavigate = () => {
@@ -84,7 +87,7 @@ const LoginPage = () => {
         <ForgotPassword>Esqueceu sua senha ?</ForgotPassword>
       </FormContainer>
       <CreateAcount>
-        Nao tem conta ?<span> Cadastre-se</span>
+        Nao tem conta ?<span onClick={handleCreateAcount}> Cadastre-se</span>
       </CreateAcount>
       <ObtainApp>Obtenha o aplicativo.</ObtainApp>
       <AppContainer>
