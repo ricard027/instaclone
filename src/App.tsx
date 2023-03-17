@@ -2,6 +2,7 @@ import './App.css'
 
 // components
 import LoginPage from './pages/login/login.page'
+import HomePage from './pages/home/home.page'
 
 // utilities
 
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage/>} />
         </Routes>
       </BrowserRouter>
     </div>

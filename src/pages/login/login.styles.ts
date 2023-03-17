@@ -10,7 +10,7 @@ export const LoginContainer = styled.main`
 `
 export const MessageError = styled.div`
   text-align: left;
-  margin: 2px 0;
+  margin: 5px 0;
   font-size: 12px;
   color: red;
 `

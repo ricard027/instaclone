@@ -1,11 +1,17 @@
-import { InputComponent, InputContainer } from './input.styled'
+import { InputComponent } from './input.styled'
+import React, {
+  FunctionComponent,
+  InputHTMLAttributes,
+  forwardRef
+} from 'react'
 
-const CustomInput = () => {
-  return (
-    <InputContainer>
-      <InputComponent />
-    </InputContainer>
-  )
+interface IpropsInput extends InputHTMLAttributes<HTMLInputElement> {
+  hasError?: boolean
 }
+
+const CustomInput: FunctionComponent<IpropsInput> = forwardRef((props, ref) => {
+  return <InputComponent {...props} ref={ref as any} />
+})
+CustomInput.displayName = 'CurtonInput'
 
 export default CustomInput

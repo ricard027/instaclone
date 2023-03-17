@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { AiFillFacebook } from 'react-icons/ai'
 import { InputContainer } from '../../components/input/input.styled'
-import CustomInput from '../../components/input/CustomInput'
+import CustomInput from '../../components/input/custonIput.component'
 import ButtonComponent from '../../components/button/custonButton.component'
 
 import validator from 'validator'
