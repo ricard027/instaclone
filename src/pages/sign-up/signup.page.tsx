@@ -18,11 +18,13 @@ import { FormContainer, SignUpContainer } from './signup.style'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import validator from 'validator'
-
-interface iformDataCreateAcount {
-  name: string
+import { createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
+import { auth, db } from '../../firebase/firebase.config'
+import { addDoc, collection } from 'firebase/firestore'
+interface IsiginUpForm {
+  completedname: string
   userName: string
-  email: string | number
+  email: string
   password: string
 }
 const SignUpPage = () => {
@@ -31,10 +33,25 @@ const SignUpPage = () => {
     register,
     formState: { errors },
     handleSubmit
-  } = useForm<iformDataCreateAcount>()
+  } = useForm<IsiginUpForm>()
 
-  const handleSubmitPress = (data: any) => {
-    console.log({ data })
+  const handleSubmitPress = async (data: IsiginUpForm) => {
+    try {
+      const userCredentials = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
+      await addDoc(collection(db, 'users'), {
+        id: userCredentials.user.uid,
+        completedname: data.completedname,
+        userName: data.userName,
+        email: userCredentials.user.email
+      })
+    } catch (error) {
+      const _erros = error as AuthError
+      console.log({ _erros })
+    }
   }
 
   console.log(errors)
@@ -63,12 +80,13 @@ const SignUpPage = () => {
             {errors?.email?.type === 'validate' && 'Insira um e-mail válido.'}
           </MessageError>
           <CustomInput
-            hasError={!!errors?.name}
+            hasError={!!errors?.completedname}
             placeholder="Nome completo"
-            {...register('name', { required: true })}
+            {...register('completedname', { required: true })}
           />
           <MessageError>
-            {errors?.name?.type === 'required' && 'Nome é obrigatório.'}
+            {errors?.completedname?.type === 'required' &&
+              'Nome é obrigatório.'}
           </MessageError>
           <CustomInput
             hasError={!!errors?.userName}
