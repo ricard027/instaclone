@@ -1,19 +1,43 @@
+// components
 import CustomInput from '../../components/input/custonIput.component'
+import ButtonComponent from '../../components/button/custonButton.component'
+import { AiFillFacebook } from 'react-icons/ai'
+
+// styles
 import { InputContainer } from '../../components/input/input.styled'
 import {
   AppContainer,
   CreateAcount,
   LoginHeadLine,
+  MessageError,
   ObtainApp,
   Separator
 } from '../login/login.styles'
 import { FormContainer, SignUpContainer } from './signup.style'
-import { AiFillFacebook } from 'react-icons/ai'
-import ButtonComponent from '../../components/button/custonButton.component'
-
+// utilities
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import validator from 'validator'
+
+interface iformDataCreateAcount {
+  name: string
+  userName: string
+  email: string | number
+  password: string
+}
 const SignUpPage = () => {
   const navigate = useNavigate()
+  const {
+    register,
+    formState: { errors },
+    handleSubmit
+  } = useForm<iformDataCreateAcount>()
+
+  const handleSubmitPress = (data: any) => {
+    console.log({ data })
+  }
+
+  console.log(errors)
   return (
     <SignUpContainer>
       <FormContainer>
@@ -24,10 +48,45 @@ const SignUpPage = () => {
         </ButtonComponent>
         <Separator>OU</Separator>
         <InputContainer>
-          <CustomInput placeholder="E-mail" />
-          <CustomInput placeholder="Nome completo" />
-          <CustomInput placeholder="Nome de usuário" />
-          <CustomInput placeholder="Senha" />
+          <CustomInput
+            hasError={!!errors?.email}
+            placeholder="E-mail"
+            {...register('email', {
+              required: true,
+              validate: (data) => {
+                return validator.isEmail(data as any)
+              }
+            })}
+          />
+          <MessageError>
+            {errors?.email?.type === 'required' && 'E-mail é obrigatório.'}
+            {errors?.email?.type === 'validate' && 'Insira um e-mail válido.'}
+          </MessageError>
+          <CustomInput
+            hasError={!!errors?.name}
+            placeholder="Nome completo"
+            {...register('name', { required: true })}
+          />
+          <MessageError>
+            {errors?.name?.type === 'required' && 'Nome é obrigatório.'}
+          </MessageError>
+          <CustomInput
+            hasError={!!errors?.userName}
+            placeholder="Nome de usuário"
+            {...register('userName', { required: true })}
+          />
+          <MessageError>
+            {errors?.userName?.type === 'required' &&
+              'Nome de usuário é obrigatório.'}
+          </MessageError>
+          <CustomInput
+            hasError={!!errors?.password}
+            placeholder="Senha"
+            {...register('password', { required: true })}
+          />
+          <MessageError>
+            {errors?.password?.type === 'required' && 'Senha é obrigatória.'}
+          </MessageError>
         </InputContainer>
 
         <p className="terms">
@@ -42,7 +101,9 @@ const SignUpPage = () => {
           <span>Política de Cookies</span>.
         </p>
 
-        <ButtonComponent>Cadastre-se</ButtonComponent>
+        <ButtonComponent onClick={() => handleSubmit(handleSubmitPress)()}>
+          Cadastre-se
+        </ButtonComponent>
       </FormContainer>
 
       <CreateAcount>
