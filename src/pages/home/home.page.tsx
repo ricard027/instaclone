@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+
+// styles
 import {
   ContainerStories,
   Homecontainer,
@@ -10,18 +12,57 @@ import {
   Rigthcontent,
   Stories
 } from './home.style'
+// icons
 import { AiFillHome, AiOutlineSearch, AiOutlineHeart } from 'react-icons/ai'
 import { ImCompass2 } from 'react-icons/im'
 import { BiMoviePlay } from 'react-icons/bi'
 import { RiMessengerLine, RiAddBoxLine } from 'react-icons/ri'
 import { HiOutlineMenu } from 'react-icons/hi'
+// Components
+import CarouselComponent from '../../components/carrousel/carousel-component'
+import PublicationComponent from '../../components/publication/publication.component'
+// Utilities
+import axios from 'axios'
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase/firebase.config'
+
 const HomePage = () => {
+  const configs = {
+    spaceBetween: 20,
+    slidesPerView: 10,
+    navigation: true,
+    pagination: { clickable: true }
+  }
+  const [images, setImages] = useState([])
+
+  useEffect(() => {
+    const getImagesFromUnsplash = async () => {
+      try {
+        const res = await axios.get('https://api.unsplash.com/search/photos', {
+          params: {
+            query: 'people',
+            per_page: 10,
+            collections: '938381'
+          },
+          headers: {
+            Authorization: `Client-ID sKl5qQ6pmkWSrLji2FD55GcBGx1Arb2Te-wYMnfZn4g`
+          }
+        })
+        const dataImages = await res.data.results
+        setImages(dataImages)
+      } catch (error) {
+        console.log('error', error)
+      }
+    }
+    void getImagesFromUnsplash()
+  }, [])
+  console.log(images)
   return (
     <Homecontainer>
       <MainAside>
         <h1>Instagram</h1>{' '}
         <NavigateAside>
-          <NavigateItem to="/" className="icon">
+          <NavigateItem to="/" className="icon" onClick={() => signOut(auth)}>
             <AiFillHome color="#fff" size={26} />
             Página inicial
           </NavigateItem>
@@ -49,7 +90,7 @@ const HomePage = () => {
             Criar
           </NavigateItem>
           <NavigateItem to="/">
-            <span></span>perfil
+            <span>{/* image profile */}</span>perfil
           </NavigateItem>
           <NavigateItem to="/" id="moreInfo">
             <HiOutlineMenu color="#fff" size={26} />
@@ -57,41 +98,29 @@ const HomePage = () => {
           </NavigateItem>
         </NavigateAside>
       </MainAside>
-
       <MainContent>
         <ContainerStories>
           <NavigationStories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
-            <Stories>
-              <div></div>
-              <p>fulano</p>
-            </Stories>
+            {images.map((imagesdata: any) => (
+              <CarouselComponent configs={configs} key={imagesdata.id}>
+                <Stories key={imagesdata.id}>
+                  <div>
+                    <img
+                      src={imagesdata.urls.regular}
+                      alt={imagesdata.alt_description}
+                    />
+                  </div>
+                  <p>{imagesdata.user.username}</p>
+                </Stories>
+              </CarouselComponent>
+            ))}
           </NavigationStories>
         </ContainerStories>
+        <PublicationComponent images={images} />
+        <PublicationComponent images={images} />
+        <PublicationComponent images={images} />
       </MainContent>
+
       <Rigthcontent>
         <div>
           Ricardo machado <button>mudar</button>

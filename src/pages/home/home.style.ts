@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
+import Colors from '../../themes/colors'
+const { primary } = Colors.bg
 export const Homecontainer = styled.div`
-  height: 100vh;
+  height: auto;
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
@@ -9,11 +11,11 @@ export const Homecontainer = styled.div`
 export const MainAside = styled.aside`
   width: 18%;
   height: 100vh;
-  background: #121212;
+  background: ${primary};
   position: fixed;
   left: 0;
   top: 0;
-  border-right: 1px solid #a8a8a8;
+  border-right: 1px solid #363636;
   h1 {
     color: #fff;
     cursor: pointer;
@@ -61,24 +63,22 @@ export const NavigateItem = styled(NavLink)`
 
 export const ContainerMore = styled.div`
   display: flex;
-  background: red;
 `
 export const MainContent = styled.section`
-  height: 100vh;
-  width: 60%;
-  background: green;
+  width: 50%;
+
+  background: ${primary};
+  margin-left: 18%;
 `
 export const NavigationStories = styled.div`
   height: 100%;
-  width: 60%;
+  width: 100%;
   display: flex;
-  background: #000;
+  overflow-x: scroll;
 `
 
 export const ContainerStories = styled.div`
-  width: 100%;
   height: 117px;
-  background: red;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -91,21 +91,29 @@ export const Stories = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-
+  gap: 5px;
   div {
     width: 66px;
     height: 66px;
     border-radius: 50%;
-    background: yellow;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
   }
 
   p {
     color: #333;
+    font-size: 0.8rem;
+    width: 3.5rem;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
   }
 `
 export const Rigthcontent = styled.div`
   background: yellow;
   height: 20%;
   width: 30%;
+  opacity: 10%;
 `
