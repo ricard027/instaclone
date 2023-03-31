@@ -1,15 +1,20 @@
+// Styles
 import './App.css'
-
-// components
-import LoginPage from './pages/login/login.page'
+// Pages
+import SignUpPage from './pages/sign-up/signup.page'
 import HomePage from './pages/home/home.page'
-
+import LoginPage from './pages/login/login.page'
 // utilities
+import { onAuthStateChanged } from 'firebase/auth'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import SignUpPage from './pages/sign-up/signup.page'
+import { auth } from './firebase/firebase.config'
 
 function App() {
+  onAuthStateChanged(auth, (user) => {
+    console.log(user)
+  })
+
   return (
     <div className="App">
       <BrowserRouter>
