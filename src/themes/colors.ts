@@ -11,6 +11,7 @@ const Colors = {
   Error: '#ea4335',
   Customs: {
     Red: '#ff3040',
+    pink: '#ff0169',
     Blue: '#0095f6'
   }
 }
