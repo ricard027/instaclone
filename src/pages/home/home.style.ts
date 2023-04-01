@@ -74,17 +74,26 @@ export const NavigationStories = styled.div`
   height: 100%;
   width: 100%;
   display: flex;
-  overflow-x: scroll;
 `
 
 export const ContainerStories = styled.div`
-  height: 117px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  margin-top: 2rem;
+
+  .swiper-pagination-bullet {
+    display: none;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #fafafa;
+    &::after {
+      font-size: 0.7rem;
+    }
+  }
 `
 export const Stories = styled.div`
-  background: #fff;
   width: 100px;
   height: 100%;
   display: flex;
@@ -92,28 +101,118 @@ export const Stories = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
-  div {
-    width: 66px;
-    height: 66px;
-    border-radius: 50%;
-    img {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-    }
-  }
 
   p {
-    color: #333;
+    color: #fafafa;
     font-size: 0.8rem;
     width: 3.5rem;
     text-overflow: ellipsis;
     overflow-x: hidden;
   }
 `
+export const ImageContainer = styled.div`
+  width: 66px;
+  height: 66px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border: solid 2px ${Colors.Customs.pink};
+    border-image-slice: 1;
+    border-radius: 50%;
+  }
+`
 export const Rigthcontent = styled.div`
-  background: yellow;
-  height: 20%;
-  width: 30%;
-  opacity: 10%;
+  margin-top: 2.5rem;
+  height: 50vh;
+  width: 20%;
+  button {
+    background: none;
+    border: none;
+    color: ${Colors.Customs.Blue};
+    cursor: pointer;
+  }
+  li {
+    margin-top: 0.6rem;
+    color: #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+
+    .container-profile-sugestion-user {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .img-sugestion-user {
+        height: 2.5rem;
+        width: 2.5rem;
+        border-radius: 50%;
+        background: #8e8e8e;
+      }
+      .sugestion-name-user {
+        text-align: justify;
+        p {
+          color: #8e8e8e;
+        }
+      }
+    }
+  }
+  footer {
+    justify-content: flex-end;
+    margin-top: 1rem;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      line-height: 5px;
+
+      li {
+        color: #8e8e8e;
+        font-size: 0.8rem;
+        cursor: pointer;
+      }
+    }
+    p {
+      margin-top: 1rem;
+      color: #8e8e8e;
+      font-size: 0.8rem;
+    }
+  }
+`
+export const UserrightContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  .container-user {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .image-rigth-content {
+    background: #8e8e8e;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+  }
+  .user-names-right-content {
+    div {
+      color: #f4f4f4;
+    }
+    p {
+      color: #8e8e8e;
+    }
+  }
+`
+export const SuggestionsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem auto;
+  div {
+    color: #8e8e8e;
+  }
+  p {
+    color: #f4f4f4;
+    cursor: pointer;
+  }
 `
