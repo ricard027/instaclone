@@ -19,7 +19,14 @@ import { InputContainer } from '../../components/input/input.styled'
 import CustomInput from '../../components/input/custonIput.component'
 import ButtonComponent from '../../components/button/custonButton.component'
 
+import {
+  AuthError,
+  AuthErrorCodes,
+  signInWithEmailAndPassword
+} from 'firebase/auth'
+
 import validator from 'validator'
+import { auth } from '../../firebase/firebase.config'
 
 interface IinputsForm {
   email: string
@@ -30,12 +37,21 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const {
     register,
+    setError,
     handleSubmit,
     formState: { errors }
   } = useForm<IinputsForm>()
 
-  const handlesubmitPress = (data: any) => {
-    console.log({ data })
+  const handlesubmitPress = async (data: IinputsForm) => {
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password)
+    } catch (error) {
+      const _erros = error as AuthError
+      console.log(_erros)
+      if (_erros.code === AuthErrorCodes.INVALID_PASSWORD) {
+        return setError('password', { type: 'invalid-password' })
+      }
+    }
   }
   const handleCreateAcount = () => {
     navigate('/sign-up')
@@ -74,6 +90,7 @@ const LoginPage = () => {
             {errors.password?.type === 'required' && 'senha é obrigatória.'}
             {errors.password?.type === 'minLength' &&
               'senha deve conter no mínimo 6 caracteres.'}
+            {errors.password?.type === 'invalid-password' && 'senha inválida.'}
           </MessageError>
         </InputContainer>
         <ButtonComponent onClick={() => handleSubmit(handlesubmitPress)()}>
