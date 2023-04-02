@@ -1,12 +1,13 @@
 import styled from 'styled-components'
 
 export const LoginContainer = styled.main`
-  height: 80vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  background: #fafafa;
 `
 export const MessageError = styled.div`
   text-align: left;

@@ -133,7 +133,7 @@ export const Rigthcontent = styled.div`
     cursor: pointer;
   }
   li {
-    margin-top: 0.6rem;
+    margin-top: 1rem;
     color: #f4f4f4;
     display: flex;
     justify-content: space-between;
@@ -144,8 +144,8 @@ export const Rigthcontent = styled.div`
       gap: 1rem;
 
       .img-sugestion-user {
-        height: 2.5rem;
-        width: 2.5rem;
+        height: 2.2rem;
+        width: 2.2rem;
         border-radius: 50%;
         background: #8e8e8e;
       }
