@@ -8,6 +8,7 @@ export const Homecontainer = styled.div`
   display: flex;
   justify-content: space-evenly;
 `
+
 export const MainAside = styled.aside`
   width: 18%;
   height: 100vh;
@@ -16,11 +17,38 @@ export const MainAside = styled.aside`
   left: 0;
   top: 0;
   border-right: 1px solid #363636;
+
+  .container-insta-logo {
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+    display: flex;
+  }
+
+  .insta-logo {
+    display: none;
+  }
+
+  @media screen and (max-width: 1264px) {
+    width: 8%;
+
+    h1 {
+      display: none;
+    }
+    .container-insta-logo {
+      justify-content: center;
+      .insta-logo {
+        display: block;
+      }
+    }
+  }
+
   h1 {
     color: #fff;
     cursor: pointer;
     margin: 2rem 0 0 1.8rem;
     font-family: 'Lobster Two', cursive;
+    border: solid red;
   }
 `
 export const NavigateAside = styled.ul`
@@ -29,8 +57,24 @@ export const NavigateAside = styled.ul`
   align-items: center;
   gap: 0.8rem;
   margin-top: 3rem;
-  height: 100vh;
   position: relative;
+
+  #containermoreInfo {
+    height: 30vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    #moreInfo {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+
+  @media screen and (max-width: 1264px) {
+    gap: 0.2rem;
+  }
 `
 export const NavigateItem = styled(NavLink)`
   color: #ffff;
@@ -49,15 +93,18 @@ export const NavigateItem = styled(NavLink)`
     transform: scale(1.1);
   }
 
-  &#moreInfo {
-    margin-top: 20rem;
-  }
-
   span {
     background: #eee;
     width: 25px;
     height: 25px;
     border-radius: 50%;
+  }
+  @media screen and (max-width: 1264px) {
+    font-size: 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 auto;
   }
 `
 
@@ -70,14 +117,12 @@ export const MainContent = styled.section`
   background: ${primary};
   margin-left: 18%;
 `
-export const NavigationStories = styled.div`
-  height: 100%;
-  width: 100%;
-  display: flex;
-`
-
 export const ContainerStories = styled.div`
   margin-top: 2rem;
+  border: solid 5px green;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
   .swiper-pagination-bullet {
     display: none;
@@ -93,6 +138,14 @@ export const ContainerStories = styled.div`
     }
   }
 `
+
+export const NavigationStories = styled.div`
+  height: 100%;
+  width: 80%;
+  display: flex;
+  border: solid 3px yellow;
+`
+
 export const Stories = styled.div`
   width: 100px;
   height: 100%;
@@ -101,6 +154,7 @@ export const Stories = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  border: solid 1px red;
 
   p {
     color: #fafafa;
@@ -126,6 +180,9 @@ export const Rigthcontent = styled.div`
   margin-top: 2.5rem;
   height: 50vh;
   width: 20%;
+  @media screen and (max-width: 1160px) {
+    display: none;
+  }
   button {
     background: none;
     border: none;
