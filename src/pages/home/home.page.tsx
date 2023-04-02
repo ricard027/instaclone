@@ -16,7 +16,12 @@ import {
   UserrightContainer
 } from './home.style'
 // icons
-import { AiFillHome, AiOutlineSearch, AiOutlineHeart } from 'react-icons/ai'
+import {
+  AiFillHome,
+  AiOutlineSearch,
+  AiOutlineHeart,
+  AiOutlineInstagram
+} from 'react-icons/ai'
 import { ImCompass2 } from 'react-icons/im'
 import { BiMoviePlay } from 'react-icons/bi'
 import { RiMessengerLine, RiAddBoxLine } from 'react-icons/ri'
@@ -32,8 +37,8 @@ import { SwiperSlide } from 'swiper/react'
 
 const HomePage = () => {
   const configs = {
-    slidesPerView: 10,
-    slidesPerGroup: 5,
+    slidesPerView: 8,
+    slidesPerGroup: 4,
     navigation: true,
     pagination: {
       clickable: true
@@ -66,7 +71,11 @@ const HomePage = () => {
   return (
     <Homecontainer>
       <MainAside>
-        <h1>Instagram</h1>{' '}
+        <div className="container-insta-logo">
+          <AiOutlineInstagram color="#fff" size={26} className="insta-logo" />
+          <h1>Instagram</h1>
+        </div>
+
         <NavigateAside>
           <NavigateItem to="/" className="icon" onClick={() => signOut(auth)}>
             <AiFillHome color="#fff" size={26} />
@@ -98,12 +107,16 @@ const HomePage = () => {
           <NavigateItem to="/">
             <span>{/* image profile */}</span>perfil
           </NavigateItem>
-          <NavigateItem to="/" id="moreInfo">
-            <HiOutlineMenu color="#fff" size={26} />
-            mais
-          </NavigateItem>
+
+          <div id="containermoreInfo">
+            <NavigateItem to="/" id="moreInfo">
+              <HiOutlineMenu color="#fff" size={26} />
+              mais
+            </NavigateItem>
+          </div>
         </NavigateAside>
       </MainAside>
+
       <MainContent>
         <ContainerStories>
           <NavigationStories>
