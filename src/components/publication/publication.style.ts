@@ -7,7 +7,7 @@ export const PublicationContainer = styled.div`
   width: 70%;
   background: ${primary};
   border-bottom: solid 1px #363636;
-  margin: 1rem auto;
+  margin: 2rem auto;
 `
 export const Publication = styled.section`
   margin: 0 auto;
