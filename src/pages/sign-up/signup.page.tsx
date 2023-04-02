@@ -18,7 +18,11 @@ import { FormContainer, SignUpContainer } from './signup.style'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import validator from 'validator'
-import { createUserWithEmailAndPassword, AuthError } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  AuthError,
+  AuthErrorCodes
+} from 'firebase/auth'
 import { auth, db } from '../../firebase/firebase.config'
 import { addDoc, collection } from 'firebase/firestore'
 interface IsiginUpForm {
@@ -32,6 +36,7 @@ const SignUpPage = () => {
   const {
     register,
     formState: { errors },
+    setError,
     handleSubmit
   } = useForm<IsiginUpForm>()
 
@@ -50,11 +55,15 @@ const SignUpPage = () => {
       })
     } catch (error) {
       const _erros = error as AuthError
-      console.log({ _erros })
+      console.log(_erros)
+      if (_erros.code === AuthErrorCodes.EMAIL_EXISTS) {
+        // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+        return setError('email', { type: 'alreadInuse' })
+      }
     }
   }
 
-  console.log(errors)
+  console.log({ errors })
   return (
     <SignUpContainer>
       <FormContainer>
@@ -76,8 +85,10 @@ const SignUpPage = () => {
             })}
           />
           <MessageError>
-            {errors?.email?.type === 'required' && 'E-mail é obrigatório.'}
-            {errors?.email?.type === 'validate' && 'Insira um e-mail válido.'}
+            {errors?.email?.type === 'required' && 'O e-mail é obrigatório.'}
+            {errors?.email?.type === 'validate' &&
+              'Por favor, nsira um e-mail válido.'}
+            {errors?.email?.type === 'alreadInuse' && 'Este email já existe.'}
           </MessageError>
           <CustomInput
             hasError={!!errors?.completedname}
@@ -93,6 +104,7 @@ const SignUpPage = () => {
             placeholder="Nome de usuário"
             {...register('userName', { required: true })}
           />
+
           <MessageError>
             {errors?.userName?.type === 'required' &&
               'Nome de usuário é obrigatório.'}
