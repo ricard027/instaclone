@@ -15,7 +15,6 @@ export const MainAside = styled.aside`
   background: ${primary};
   position: fixed;
   left: 0;
-  top: 0;
   border-right: 1px solid #363636;
 
   .container-insta-logo {
@@ -42,13 +41,15 @@ export const MainAside = styled.aside`
       }
     }
   }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
 
   h1 {
     color: #fff;
     cursor: pointer;
     margin: 2rem 0 0 1.8rem;
     font-family: 'Lobster Two', cursive;
-    border: solid red;
   }
 `
 export const NavigateAside = styled.ul`
@@ -112,14 +113,18 @@ export const ContainerMore = styled.div`
   display: flex;
 `
 export const MainContent = styled.section`
-  width: 50%;
+  width: 40%;
 
   background: ${primary};
   margin-left: 18%;
+
+  @media screen and (max-width: 1264px) {
+    margin-left: 0;
+    width: 70%;
+  }
 `
 export const ContainerStories = styled.div`
   margin-top: 2rem;
-  border: solid 5px green;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -143,7 +148,9 @@ export const NavigationStories = styled.div`
   height: 100%;
   width: 80%;
   display: flex;
-  border: solid 3px yellow;
+  @media screen and (max-width: 1264px) {
+    width: 70vw;
+  }
 `
 
 export const Stories = styled.div`
@@ -154,7 +161,6 @@ export const Stories = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
-  border: solid 1px red;
 
   p {
     color: #fafafa;
@@ -244,6 +250,7 @@ export const UserrightContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-left: -5px;
   }
   .image-rigth-content {
     background: #8e8e8e;
