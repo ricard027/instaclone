@@ -1,10 +1,10 @@
+import React, { FunctionComponent } from 'react'
 import { HeaderContainerMobile } from './header.style'
 
-const HeaderMobile = () => {
-  return (
-    <HeaderContainerMobile>
-      <p>mobile</p>
-    </HeaderContainerMobile>
-  )
+interface IheaderMobileProps {
+  children: React.ReactNode
+}
+const HeaderMobile: FunctionComponent<IheaderMobileProps> = ({ children }) => {
+  return <HeaderContainerMobile>{children}</HeaderContainerMobile>
 }
 export default HeaderMobile
