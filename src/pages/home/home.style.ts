@@ -122,10 +122,12 @@ export const MainContent = styled.section`
     margin-left: 0;
     width: 70%;
   }
+  @media screen and (max-width: 767px) {
+    margin-top: 3.5rem;
+  }
 `
 export const ContainerStories = styled.div`
   margin-top: 2rem;
-  width: 100%;
   display: flex;
   justify-content: center;
 
@@ -150,6 +152,9 @@ export const NavigationStories = styled.div`
   display: flex;
   @media screen and (max-width: 1264px) {
     width: 70vw;
+  }
+  @media screen and (max-width: 767px) {
+    width: 80vw;
   }
 `
 
