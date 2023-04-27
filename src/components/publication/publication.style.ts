@@ -8,6 +8,10 @@ export const PublicationContainer = styled.div`
   background: ${primary};
   border-bottom: solid 1px #363636;
   margin: 2rem auto;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `
 export const Publication = styled.section`
   margin: 0 auto;

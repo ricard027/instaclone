@@ -5,35 +5,27 @@ import {
   ContainerStories,
   Homecontainer,
   ImageContainer,
-  MainAside,
   MainContent,
-  NavigateAside,
-  NavigateItem,
   NavigationStories,
   Rigthcontent,
   Stories,
   SuggestionsContainer,
   UserrightContainer
 } from './home.style'
-// icons
-import {
-  AiFillHome,
-  AiOutlineSearch,
-  AiOutlineHeart,
-  AiOutlineInstagram
-} from 'react-icons/ai'
-import { ImCompass2 } from 'react-icons/im'
-import { BiMoviePlay } from 'react-icons/bi'
-import { RiMessengerLine, RiAddBoxLine } from 'react-icons/ri'
-import { HiOutlineMenu } from 'react-icons/hi'
+// Icons
+
+import { AiOutlineSearch, AiOutlineHeart } from 'react-icons/ai'
+
 // Components
 import CarouselComponent from '../../components/carrousel/carousel-component'
 import PublicationComponent from '../../components/publication/publication.component'
+import HeaderBottomMobile from '../../components/header/header-bottom-mobile.component'
+import MainAsideComponent from '../../components/aside/main-aside.component'
 // Utilities
 import axios from 'axios'
-import { signOut } from 'firebase/auth'
-import { auth } from '../../firebase/firebase.config'
+
 import { SwiperSlide } from 'swiper/react'
+import { HeaderContainerMobile } from '../../components/header/header.style'
 
 const HomePage = () => {
   const configs = {
@@ -70,53 +62,16 @@ const HomePage = () => {
   console.log(images)
   return (
     <Homecontainer>
-      <MainAside>
-        <div className="container-insta-logo">
-          <AiOutlineInstagram color="#fff" size={26} className="insta-logo" />
-          <h1>Instagram</h1>
+      <HeaderContainerMobile>
+        <h1>Instagram</h1>
+        <div>
+          <AiOutlineSearch color="#fff" size={18} />
+          <input type="text" placeholder="Pesquisar" />
+          <AiOutlineHeart color="#fff" size={26} />
         </div>
-
-        <NavigateAside>
-          <NavigateItem to="/" className="icon" onClick={() => signOut(auth)}>
-            <AiFillHome color="#fff" size={26} />
-            Página inicial
-          </NavigateItem>
-          <NavigateItem to="/">
-            <AiOutlineSearch color="#fff" size={26} />
-            Pesquisa
-          </NavigateItem>
-          <NavigateItem to="/">
-            <ImCompass2 color="#fff" size={26} />
-            Explorar
-          </NavigateItem>
-          <NavigateItem to="/">
-            <BiMoviePlay color="#fff" size={26} />
-            Reels
-          </NavigateItem>
-          <NavigateItem to="/">
-            <RiMessengerLine color="#fff" size={26} /> Mensagens
-          </NavigateItem>
-          <NavigateItem to="/">
-            <AiOutlineHeart color="#fff" size={26} />
-            Notificações
-          </NavigateItem>
-          <NavigateItem to="/">
-            <RiAddBoxLine color="#fff" size={26} />
-            Criar
-          </NavigateItem>
-          <NavigateItem to="/">
-            <span>{/* image profile */}</span>perfil
-          </NavigateItem>
-
-          <div id="containermoreInfo">
-            <NavigateItem to="/" id="moreInfo">
-              <HiOutlineMenu color="#fff" size={26} />
-              mais
-            </NavigateItem>
-          </div>
-        </NavigateAside>
-      </MainAside>
-
+      </HeaderContainerMobile>
+      <HeaderBottomMobile />
+      <MainAsideComponent />
       <MainContent>
         <ContainerStories>
           <NavigationStories>
