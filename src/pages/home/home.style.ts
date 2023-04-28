@@ -74,6 +74,13 @@ export const Stories = styled.div`
     text-overflow: ellipsis;
     overflow-x: hidden;
   }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    p {
+      text-align: center;
+    }
+  }
 `
 export const ImageContainer = styled.div`
   width: 66px;
@@ -85,6 +92,11 @@ export const ImageContainer = styled.div`
     border: solid 2px ${Colors.Customs.pink};
     border-image-slice: 1;
     border-radius: 50%;
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 3.5rem;
+    width: 3.5rem;
   }
 `
 export const Rigthcontent = styled.div`
