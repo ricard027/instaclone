@@ -12,6 +12,7 @@ import {
   SuggestionsContainer,
   UserrightContainer
 } from './home.style'
+import { HeaderContainerMobile } from '../../components/header/header.style'
 // Icons
 
 import { AiOutlineSearch, AiOutlineHeart } from 'react-icons/ai'
@@ -23,19 +24,21 @@ import HeaderBottomMobile from '../../components/header/header-bottom-mobile.com
 import MainAsideComponent from '../../components/aside/main-aside.component'
 // Utilities
 import axios from 'axios'
-
+import { useSlidesPreview } from './calcSlidesQtd'
 import { SwiperSlide } from 'swiper/react'
-import { HeaderContainerMobile } from '../../components/header/header.style'
 
 const HomePage = () => {
+  const { qtdSlidePreview } = useSlidesPreview()
+  console.log(qtdSlidePreview)
   const configs = {
-    slidesPerView: 8,
+    slidesPerView: qtdSlidePreview,
     slidesPerGroup: 4,
     navigation: true,
     pagination: {
       clickable: true
     }
   }
+
   const [images, setImages] = useState([])
 
   useEffect(() => {
@@ -59,7 +62,6 @@ const HomePage = () => {
     }
     void getImagesFromUnsplash()
   }, [])
-  console.log(images)
   return (
     <Homecontainer>
       <HeaderContainerMobile>
