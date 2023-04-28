@@ -21,6 +21,10 @@ export const Publication = styled.section`
   width: 90%;
   background: #363636;
   border-radius: 0.3rem;
+  @media screen and (max-width: 767px) {
+    height: 50vh;
+    margin-bottom: 0.6rem;
+  }
 `
 export const UsercontainerPublication = styled.div`
   margin: 0 auto;
