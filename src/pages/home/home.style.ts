@@ -54,7 +54,7 @@ export const NavigationStories = styled.div`
     width: 70vw;
   }
   @media screen and (max-width: 767px) {
-    width: 80vw;
+    width: 90vw;
   }
 `
 
