@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const SignUpContainer = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
   justify-content: space-evenly;
   gap: 10px;
   width: 360px;
-  height: 65vh;
+  height: auto;
 
   .terms {
     text-align: center;
