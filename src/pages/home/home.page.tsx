@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from 'react'
-
 // styles
 import {
   ContainerStories,
@@ -23,13 +21,14 @@ import PublicationComponent from '../../components/publication/publication.compo
 import HeaderBottomMobile from '../../components/header/header-bottom-mobile.component'
 import MainAsideComponent from '../../components/aside/main-aside.component'
 // Utilities
-import axios from 'axios'
 import { useSlidesPreview } from './calcSlidesQtd'
+import { getImagesFromUnsplash } from '../../hooks/getImagesHook'
 import { SwiperSlide } from 'swiper/react'
 
 const HomePage = () => {
   const { qtdSlidePreview } = useSlidesPreview()
-  console.log(qtdSlidePreview)
+  const { images } = getImagesFromUnsplash()
+
   const configs = {
     slidesPerView: qtdSlidePreview,
     slidesPerGroup: 4,
@@ -39,29 +38,6 @@ const HomePage = () => {
     }
   }
 
-  const [images, setImages] = useState([])
-
-  useEffect(() => {
-    const getImagesFromUnsplash = async () => {
-      try {
-        const res = await axios.get('https://api.unsplash.com/search/photos', {
-          params: {
-            query: 'people',
-            per_page: 20,
-            collections: '938381'
-          },
-          headers: {
-            Authorization: `Client-ID sKl5qQ6pmkWSrLji2FD55GcBGx1Arb2Te-wYMnfZn4g`
-          }
-        })
-        const dataImages = await res.data.results
-        setImages(dataImages)
-      } catch (error) {
-        console.log('error', error)
-      }
-    }
-    void getImagesFromUnsplash()
-  }, [])
   return (
     <Homecontainer>
       <HeaderContainerMobile>
