@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const SignUpContainer = styled.div`
   width: 100vw;
   height: auto;
+  min-height: 100vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;

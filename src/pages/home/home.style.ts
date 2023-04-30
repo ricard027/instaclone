@@ -66,6 +66,7 @@ export const Stories = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5px;
+  cursor: pointer;
 
   p {
     color: #fafafa;

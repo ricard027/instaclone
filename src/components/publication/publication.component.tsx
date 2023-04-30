@@ -20,7 +20,6 @@ interface IpublicationProps {
 const PublicationComponent: FunctionComponent<IpublicationProps> = ({
   images
 }) => {
-  console.log(images)
   return (
     <PublicationContainer>
       <UsercontainerPublication>

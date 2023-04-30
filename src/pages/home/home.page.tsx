@@ -10,10 +10,12 @@ import {
   SuggestionsContainer,
   UserrightContainer
 } from './home.style'
-import { HeaderContainerMobile } from '../../components/header/header.style'
+import {
+  HeaderContainerMobile,
+  SearchIcon
+} from '../../components/header/header.style'
 // Icons
-
-import { AiOutlineSearch, AiOutlineHeart } from 'react-icons/ai'
+import { AiOutlineHeart } from 'react-icons/ai'
 
 // Components
 import CarouselComponent from '../../components/carrousel/carousel-component'
@@ -37,18 +39,21 @@ const HomePage = () => {
       clickable: true
     }
   }
-
   return (
     <Homecontainer>
       <HeaderContainerMobile>
         <h1>Instagram</h1>
         <div>
-          <AiOutlineSearch color="#fff" size={18} />
           <input type="text" placeholder="Pesquisar" />
-          <AiOutlineHeart color="#fff" size={26} />
+          <SearchIcon color="#fff" size={22} id="searchIcon" />
+          <AiOutlineHeart
+            size={26}
+            color="#fff"
+            style={{ cursor: 'pointer' }}
+          />
         </div>
       </HeaderContainerMobile>
-      <HeaderBottomMobile />
+      {qtdSlidePreview === 6 && <HeaderBottomMobile />}
       <MainAsideComponent />
       <MainContent>
         <ContainerStories>
