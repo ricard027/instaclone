@@ -14,8 +14,6 @@ const HeaderBottomMobile = () => {
       <RiAddBoxLine color="#fff" size={26} />
       <RiMessengerLine color="#fff" size={26} />
       <div>{/* Foto de perfil */}</div>
-
-      <div></div>
     </BottomHeaderMobile>
   )
 }
